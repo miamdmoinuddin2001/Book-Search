@@ -31,7 +31,7 @@ body {
  }
 
 .image {
-  background-image: url(../img/books.jpg);
+  background-image: url(../books.jpg);
   width: 50%;
   height: 100vh;
 }
