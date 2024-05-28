@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+
+    <script> //identify errors
+        onerror = handleErr;
+        var txt = "";
+        function handleErr(msg, url, l) {
+            txt = "There was an error on this page.\n\n";
+            txt += "Error: " + msg + "\n";
+            txt += "URL: " + url + "\n";
+            txt += "Line: " + l + "\n\n";
+            txt += "Click OK to continue.\n\n";
+            alert(txt);
+            return true;
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/69b89f96e7.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="all">
+        <div class="home" id="home">
+            <div class="image"></div>
+            <div id="register" class="account">
+                <div class="message">
+                    <span>Welcome to Book Search. <br>All your favourite books in one place.</span>
+                </div>
+                <div class="home-buttons">
+                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"
+                        class="registerbutton">Sign
+                        Up</button>
+                    <div id="id01" class="modal">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                        <form class="modal-content" action="/action_page.php" method="post" name="registerForm"
+                            id="registerForm">
+                            <div class="container">
+                                <h1>Sign Up</h1>
+                                <p>Please fill in this form to create a Book Search account.</p>
+                                <hr>
+                                <label for="username"><b>Username</b></label>
+                                <span id="username-alert" class="span-alert"></span>
+                                <input type="text" placeholder="Enter username" name="username" id="username" required>
+
+                                <label for="email"><b>Email</b></label>
+                                <span id="email-alert" class="span-alert"></span>
+                                <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+                                <label for="psw"><b>Password</b></label>
+                                <span id="psw-alert" class="span-alert"></span>
+                                <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+                                <label for="psw-repeat"><b>Repeat Password</b></label>
+                                <span id="psw-rpt-alert" class="span-alert"></span>
+                                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat"
+                                    required>
+
+                                <div class="clearfix">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                        class="cancelbtn">Cancel</button>
+                                    <button type="button" class="signupbtn" onclick="registerNewUser()">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;"
+                        class="loginbutton">Log In</button>
+                    <div id="id02" class="modal">
+                        <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                        <form class="modal-content" action="/action_page.php" name="loginForm" method="post" id="login">
+
+                            <div class="register-success">
+                                <span id="register-success"></span>
+                            </div>
+
+                            <div class="container">
+                                <h1>Log In</h1>
+                                <p>Please fill in this form to login on your Book Search account.</p>
+                                <hr>
+
+                                <label for="email"><b>Email</b></label>
+                                <span id="emailLogin-alert" class="span-alert"></span>
+                                <input type="text" placeholder="Enter Email" name="email" id="emailLogin" required>
+
+                                <label for="psw"><b>Password</b></label>
+                                <span id="pswLogin-alert" class="span-alert"></span>
+                                <input type="password" placeholder="Enter Password" name="pswLogin" id="pswLogin"
+                                    required>
+                            </div>
+                            <div class="clearfix">
+                                <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                                    class="cancelbtn">Cancel</button>
+                                <button type="button" class="loginbtn" onclick="login()">Log In</button>
+
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="initial" style="display: none">
+
+            <div class="topnav" id="topnav">
+                <span id="showUsername"></span>
+                <span id="showCurrentTime"></span>
+                <span id="showPreviousAccess"></span>
+                <p id="goToSearch"><b>Search</b></p>
+                <p id="goToFavourites"><b>Favourites</b></p>
+                <button type="submit" id="submit" title="Log Out" onclick="logOut()"><i
+                        class="fas fa-sign-out-alt red"></i></button>
+            </div>
+
+            <div class="books">
+                <div id="search" class="search">
+                    <h1>Let the fun begin!</h1>
+                    <form id="myform" action="javascript:buttonFindBooks()">
+                        <div class="input-field">
+                            <input type="search" id="books" placeholder="Start searching :)">
+                        </div>
+                        <div class="filter" id="radio-group">
+                            <div class="filter-all">
+                                <input type="radio" id="filter-all" name="filter" value="all" checked>
+                                <label for="all">All</label>
+                            </div>
+                            <div class="filter-author">
+                                <input type="radio" id="filter-author" name="filter" value="author">
+                                <label for="author">Filter by Author</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="filter-title" name="filter" value="title">
+                                <label for="title">Filter by Title</label><br>
+                            </div>
+                        </div>
+                        <button type="submit" class="searchbtn">Search</button>
+                    </form>
+                </div>
+                <div id="result" class="result"></div>
+                <div class="favourites" id="favourites"></div>
+            </div>
+        </div>
+
+    </div>
+    <!--fecha all-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>
