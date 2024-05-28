@@ -1,0 +1,490 @@
+/* To apply to all document */
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+/* Div that encapsulates all other divs on the page */
+.all {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Div with first page */
+.home {
+  display: flex;
+  flex-direction: row;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100vh;
+  justify-content: center;
+ }
+
+.image {
+  background-image: url(../img/books.jpg);
+  width: 50%;
+  height: 100vh;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Big button on home div */
+.registerbutton {
+  background-color: #882F27;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+/* Big button on home div */
+.loginbutton {
+  background-color: white;
+  color: #882F27;
+  padding: 14px 20px;
+  border: solid 2px #882F27;
+  cursor: pointer;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  opacity: 0.9;
+}
+
+/* To be applied to all buttons */
+button:hover {
+  opacity:1;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: white;
+  outline: none;
+}
+
+/* To be applied to spans with alert message */
+.span-alert {
+  font-size: 0.7em;
+  font-weight: bold;
+  color: #B02E2C;
+  display: block;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  right: 0;
+  top: 0;
+  width: 50%; /* Half page width, so it doesn't cover the image */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: lightgrey;
+  padding: 40px;
+}
+
+.modal-content {
+  background-color: transparent;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: none;
+  width: 90%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler for both modals*/
+hr {
+  border: solid 1px #882F27;
+  margin-top: 7px;
+  margin-bottom: 20px;
+  }
+
+/* The Close Button (x) for both modals */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #B02E2C;
+  cursor: pointer;
+}
+
+ /* Clear floats */
+ .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Buttons inside the modal */
+.cancelbtn {
+  background-color: #B02E2C;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+   opacity: 0.9;
+}
+
+.signupbtn, .loginbtn {
+  background-color: #1D3C31;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn, .loginbtn {
+  float: left;
+  width: 50%;
+}
+
+/* To appear inside the login modal after registration */
+.register-success {
+  text-align: center;
+  font-size: 0.9em;
+  color: #1D3C31;
+  font-weight: bold;
+}
+
+/* Change styles for cancel button, signup button and login button on extra small screens */
+@media screen and (max-width: 300px) {
+.cancelbtn, .signupbtn, .loginbtn {
+  width: 100%;
+  }
+}
+
+/* Style top navigation bar */
+.topnav {
+  background-color: lightgrey;
+  border-bottom: solid 3px #882F27;
+  overflow: hidden;
+  color: black;
+}
+
+/* Style span elements inside the navigation bar */
+.topnav span {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+/* Style p elements inside the navigation bar */
+.topnav p {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* Style button element inside the navigation bar */
+.topnav button {
+  float: right;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  margin-right: 45px;
+  border: none;
+  background-color: transparent;
+}
+
+/* Style log out icon inside button element */
+.fa-sign-out-alt {
+  color: #000;
+  font-size: 1.5em;
+}
+
+.fa-sign-out-alt:hover,
+.fa-sign-out-alt:focus {
+  color: #B02E2C;
+  cursor: pointer;
+}
+
+/* Style user icon inside navigation bar */
+.fa-user {
+  color: #1D3C31;
+  font-size: 1em;
+}
+
+/* Change the color of p elements on hover */
+.topnav p:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+/* Style book search */
+.books {
+  margin-top: 50px;
+}
+
+input[type=search] {
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=search]:focus {
+  background-color: white;
+  outline: solid;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  text-align: center;
+}
+
+.filter-all {
+  margin-right: 15px;
+}
+
+.filter-author {
+  margin-right: 15px;
+}
+
+.searchbtn {
+  background-color: #1D3C31;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+
+/* Style the favourite star icon */
+.fa-star {
+  font-size: 1.5em;
+  margin-top: 3px;
+}
+
+.fa-star:hover,
+.fa-star:focus {
+  cursor: pointer;
+}
+
+.favourite-icon {
+  color: #D3892C;
+  margin-top: 3px;
+ }
+
+ /* Style book icon/read book link */
+.fa-book-open {
+  font-size: 1.5em;
+  color: #000;
+  margin-top: 3px;
+  margin-left: 10px;  
+}
+
+.fa-book-open:hover,
+.fa-book-open:focus {
+  cursor: pointer;
+  color: #882F27;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+/* Style search results and favourites */
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.favourite-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favouritesTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.card-hr {
+  border: solid 1px #882F27;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.col-lg-6,
+.col-md-4,
+.col-md-8 {
+	position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px
+}
+
+.col-lg-6 {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%
+}
+
+.card {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: solid 1px #882F27;
+	border-radius: .25rem
+}
+
+.row {
+  display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: 15px;
+  margin-left: 15px;
+}
+
+.mt-4 {
+  margin-top: 1.5rem!important;
+  margin-bottom: 1.5rem!important;
+}
+
+.no-gutters {
+  margin-right: 0;
+	margin-left: 0
+}
+
+.col-md-4 {
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding-top: 5px;
+}
+
+.card-img {
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	width: 100%
+}
+
+.card-img {
+	border-top-left-radius: calc(.25rem - 1px);
+	border-top-right-radius: calc(.25rem - 1px)
+}
+
+.card-img {
+	border-bottom-right-radius: calc(.25rem - 1px);
+	border-bottom-left-radius: calc(.25rem - 1px)
+}
+
+.col-md-8 {
+  -ms-flex: 0 0 66.666667%;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%
+}
+
+.card-body {
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	min-height: 1px;
+	padding: 1.25rem
+}
+
+.card-title {
+	margin-bottom: .75rem
+}
+
+.card-text:last-child {
+	margin-bottom: 0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
